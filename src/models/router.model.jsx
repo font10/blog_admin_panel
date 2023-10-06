@@ -11,6 +11,14 @@ export const route = {
     title: 'dashboard',
     path: '/dashboard',
   },
+  places: {
+    title: 'places',
+    path: '/places',
+  },
+  comments: {
+    title: 'comments',
+    path: '/comments',
+  },
   createPlace: {
     title: 'CreatePlace',
     path: '/createPlace',
@@ -23,12 +31,5 @@ export const route = {
     title: 'Blogs',
     path: '/blogs',
   },
-  categories: {
-    title: 'Categories',
-    path: '/categories',
-  },
-  blogsbyplace: {
-    title: 'blogsByPlace',
-    path: '/place',
-  },
+
 }

@@ -1,8 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
 import { route } from './models/router.model';
-import { Home } from './pages/Home/Home';
-import { Dashboard } from './pages/Dashboard/Dashboard';
+import { Blogs, Comments, Dashboard, Home, Places } from './pages/index';
 import { Layout } from './components';
 
 function App() {
@@ -11,7 +10,9 @@ function App() {
       <Layout>
         <Routes>
           <Route path={ route.root.path } element={<Home />} />
-          <Route path={ route.dashboard.path } element={<Dashboard />} />
+          <Route path={ route.blogs.path } element={<Blogs />} />
+          <Route path={ route.places.path } element={<Places />} />
+          <Route path={ route.comments.path } element={<Comments />} />
         </Routes>
       </Layout>
     </div>
