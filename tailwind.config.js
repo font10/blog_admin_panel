@@ -8,6 +8,9 @@ module.exports = {
       },
       fontFamily: {
         londrina: ['Londrina Solid'],
+      },
+      transitionProperty: {
+        'height': 'height'
       }
     },
   },

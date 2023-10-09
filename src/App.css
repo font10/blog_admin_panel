@@ -16,3 +16,7 @@
 body {
   background-color: #cccccc;
 }
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}

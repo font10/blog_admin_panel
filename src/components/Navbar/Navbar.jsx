@@ -1,5 +1,6 @@
 import React from 'react'
 import { useStateContext } from '../../context/ContextProvider';
+import { FaUser, IoMdNotifications } from '../../utils/icons'
 
 export const Navbar = () => {
   const { activeMenu } = useStateContext();
@@ -9,8 +10,9 @@ export const Navbar = () => {
       <div className={`font-londrina ${ activeMenu ? 'ml-72': 'ml-24' } text-xl`}>
         Colourvid
       </div>
-      <div>
-        dasd
+      <div className='flex flex-row gap-7'>
+        <IoMdNotifications size={20} />
+        <FaUser />
       </div>
     </div>
   )

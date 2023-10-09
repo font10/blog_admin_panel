@@ -31,5 +31,19 @@ export const route = {
     title: 'Blogs',
     path: '/blogs',
   },
+  images: {
+    title: 'images',
+    path: '/images',
+  },
+  user: {
+    myprofile: {
+      title: 'myprofile',
+      path: '/myprofile',
+    },
+    editprofile: {
+      title: 'edit profile',
+      path: '/editprofile',
+    },
+  }
 
 }
