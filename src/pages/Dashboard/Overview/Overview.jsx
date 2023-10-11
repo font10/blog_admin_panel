@@ -7,8 +7,8 @@ import {
   Area,
   Tooltip,
 } from "recharts";
-import { data } from "../../utils/constants";
-import { icon_B, icon_C, icon_I, icon_P } from "../../utils/images";
+import { data } from "../../../utils/constants";
+import { icon_B, icon_C, icon_I, icon_P } from "../../../utils/images";
 
 export const Overview = () => {
   const overviewInfo = [
@@ -21,10 +21,10 @@ export const Overview = () => {
   return (
     <div>
       <span className="font-londrina font-regular ml-5 text-2xl">Overview</span>
-      <div className="flex flex-row justify-center w-full mt-8 gap-3">
-        <div className="flex flex-col w-3/12">
+      <div className="flex flex-col xl:flex-row justify-center w-full mt-8 gap-3 overflow-x-auto">
+        <div className={`grid grid-cols-4 h-20 w-full xl:grid xl:grid-cols-2 w-3/12 h-52`}>
           {overviewInfo.map((info) => (
-            <div className="cardsInfo flex flex-row items-center w-full gap-3 p-5 py-3">
+            <div key={crypto.randomUUID()} className="flex flex-row items-center w-6/12 gap-3 p-5 py-3">
               <img src={info.img} width={60} alt="" />
               <div className="flex flex-col">
                 <span className="font-londrina font-light text-[15px]">
@@ -38,10 +38,10 @@ export const Overview = () => {
           ))}
         </div>
 
-        <div className="grafic w-9/12">
+        <div className="grafic w-full xl:w-9/12 overflow-x-auto">
           <AreaChart
-            width={630}
-            height={330}
+            width={800}
+            height={240}
             data={data}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
           >
@@ -101,3 +101,23 @@ export const Overview = () => {
     </div>
   );
 };
+
+/*
+
+<div className={`flex flex-col w-3/12`}>
+  {overviewInfo.map((info) => (
+    <div key={crypto.randomUUID()} className="flex flex-row items-center w-6/12 gap-3 p-5 py-3">
+      <img src={info.img} width={60} alt="" />
+      <div className="flex flex-col">
+        <span className="font-londrina font-light text-[15px]">
+          {info.title}
+        </span>
+        <span className="font-londrina font-light text-[24px]">
+          {info.quantity}
+        </span>
+      </div>
+    </div>
+  ))}
+</div>
+
+*/

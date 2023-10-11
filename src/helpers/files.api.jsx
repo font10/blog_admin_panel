@@ -5,5 +5,5 @@ export const getInfoImages = async() => {
 
   if(!data) console.log('Error')
 
-  return data.infoImages.slice(0, 5)
+  return data.infoImages
 }

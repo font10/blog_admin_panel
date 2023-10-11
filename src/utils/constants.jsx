@@ -1,6 +1,6 @@
 import { route } from '../models/router.model'
 import { AiOutlineComment, HiOutlineDocumentText, BsCardImage, MdDashboard, MdPlace } from './icons'
-import { icon_EP, icon_L, icon_MP, icon_S } from './images'
+import { cascada, castillo, icon_EP, icon_L, icon_MP, icon_S, montana, sombrilla, via_lactea } from './images'
 
 export const menuSidebar = [
   { name: 'Home', icon: <MdDashboard size={26} />, route: route.root.path },
@@ -14,6 +14,42 @@ export const menuUserSidebar = [
   { name: 'Edit Profile', icon: icon_EP, route: route.user.editprofile.path },
   { name: 'Settings', icon: icon_S, route: route.places.path },
   { name: 'Logout', icon: icon_L, route: route.places.path },
+]
+
+export const categories = [
+  'Mountain',
+  'Waterfall',
+  'Coast',
+  'Milky way',
+  'Architecture',
+]
+
+export const categoriesSearch = [
+  { name: 'Architecture', icon: castillo },
+  { name: 'Coast', icon: sombrilla },
+  { name: 'Milky way', icon: via_lactea },
+  { name: 'Mountain', icon: montana },
+  { name: 'Waterfall', icon: cascada },
+]
+
+export const blogsHead = [ 
+  { name: 'Image', width: 'w-10', align: ''},
+  { name: 'Title', width: 'w-32', align: ''},
+  { name: 'Description', width: 'w-48', align: ''},
+  { name: 'Category', width: 'w-20', align: ''},
+  { name: 'Country', width: 'w-24', align: 'text-left'},
+  { name: 'Place', width: 'w-24', align: ''},
+  { name: 'User', width: 'w-20', align: ''},
+  { name: 'Created At', width: 'w-20', align: ''},
+  { name: 'Updated At', width: 'w-20', align: ''  },
+  { name: 'Actions', width: 'w-20', align: 'text-left'  }
+]
+
+export const imagesHead = [
+  { name: 'Image', width: '', align: 'text-center' },
+  { name: 'Name', width: 'w-40', align: 'text-center' },
+  { name: 'Size', width: 'w-16', align: '' },
+  { name: 'Weight', width: 'w-10', align: '' },
 ]
 
 export const data = [
@@ -75,42 +111,42 @@ export const data = [
   },
   {
     "name": "Aug",
-    "blogs": 0,
-    "comments": 0,
-    "places": 0,
-    "images": 0,
-    "amt": 0
+    "blogs": 2200,
+    "comments": 1230,
+    "places": 3450,
+    "images": 1860,
+    "amt": 2000
   },
   {
     "name": "Sept",
-    "blogs": 0,
-    "comments": 0,
-    "places": 0,
-    "images": 0,
+    "blogs": 2110,
+    "comments": 1120,
+    "places": 1540,
+    "images": 3760,
     "amt": 0
   },
   {
     "name": "Oct",
-    "blogs": 0,
-    "comments": 0,
-    "places": 0,
-    "images": 0,
+    "blogs": 2000,
+    "comments": 3890,
+    "places": 4220,
+    "images": 1000,
     "amt": 0
   },
   {
     "name": "Nov",
-    "blogs": 0,
-    "comments": 0,
-    "places": 0,
-    "images": 0,
+    "blogs": 4500,
+    "comments": 1230,
+    "places": 790,
+    "images": 2300,
     "amt": 0
   },
   {
     "name": "Dec",
-    "blogs": 0,
-    "comments": 0,
-    "places": 0,
-    "images": 0,
+    "blogs": 2890,
+    "comments": 2300,
+    "places": 1500,
+    "images": 3400,
     "amt": 0
   },
 ]
