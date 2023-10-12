@@ -5,6 +5,7 @@ import { categories } from "../../utils/constants";
 import { AiOutlineLeft, AiOutlineRight, AiOutlineCloseCircle } from 'react-icons/ai'
 import { getListPlaces } from "../../helpers/places.api";
 import { noImage } from "../../utils/images";
+import { uploadImage } from "../../helpers/files.api";
 
 export const SidebarCrud = ({ blog }) => {
   const INITIAL_VALUES = {
@@ -26,8 +27,41 @@ export const SidebarCrud = ({ blog }) => {
       .catch(err => console.log(err))
   }, [])
 
+  useEffect(() => {
+    if (!inputs.image) {
+      setPreview(undefined)
+      return
+    }
+
+    const objectUrl = URL.createObjectURL(new Blob([inputs.image]), {type: "application/zip"})
+    setPreview(objectUrl)
+
+    return () => { URL.revokeObjectURL(objectUrl) }
+  }, [inputs.image])
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(inputs)
+
+    try {
+      const formData = new FormData()
+      let filename = null
+      
+      if(typeof inputs.image === 'object') {
+        filename = crypto.randomUUID() + '_' + inputs.image.name
+        formData.append("filename", filename)
+        formData.append("image", inputs.image)
+
+        uploadImage(formData)
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      } else {
+        return
+      }
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   const onChangeFile = (e) => {
@@ -57,18 +91,6 @@ export const SidebarCrud = ({ blog }) => {
     var slider = document.querySelector('#slider')
     slider.scrollLeft = slider.scrollLeft + 200
   }
-
-  useEffect(() => {
-    if (!inputs.image) {
-      setPreview(undefined)
-      return
-    }
-
-    const objectUrl = URL.createObjectURL(new Blob([inputs.image]), {type: "application/zip"})
-    setPreview(objectUrl)
-
-    return () => { URL.revokeObjectURL(objectUrl) }
-  }, [inputs.image])
 
   return (
     <div className={`flex flex-col h-full w-[500px] h-full right-0 top-0 fixed bg-gray-200 shadow-xl transition duration-500 ease-in-out`}>
@@ -125,7 +147,7 @@ export const SidebarCrud = ({ blog }) => {
                 {
                   places.map(place => (
                     <div key={crypto.randomUUID()} 
-                      className={`${inputs.place === place._id.toString() ? 'bg-purple-500 p-1 rounded-xl' : 'bg-none mt-4 transition duration-700 ease-in-out hover:mt-0 hover:rounded-xl' } relative min-w-[150px] min-h-[250px] group overflow-hidden transition-shadow cursor-pointer`} 
+                      className={`${inputs.place === place._id.toString() ? 'bg-purple-500 p-1 rounded-xl' : 'bg-none mt-4 transition duration-700 ease-in-out hover:mt-0 hover:rounded-xl' } relative min-w-[130px] min-h-[180px] group overflow-hidden transition-shadow cursor-pointer`} 
                       onClick={() => handlePlace(place)}
                     >
                       <img src={`http://localhost:5000/images/` + place.image.split('_').splice(1).join(' ')}  alt='' className='h-full object-cover transition-transform duration-500 mb-2 group-hover:rotate-3 group-hover:scale-125 rounded-xl' />

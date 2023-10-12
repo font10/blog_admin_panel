@@ -7,3 +7,9 @@ export const getInfoImages = async() => {
 
   return data.infoImages
 }
+
+export const uploadImage = async(formData) => {
+  const { data } = await axios.post('http://localhost:5000/images/single', formData)
+
+  return data 
+}

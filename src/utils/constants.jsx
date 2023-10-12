@@ -52,6 +52,15 @@ export const imagesHead = [
   { name: 'Weight', width: 'w-10', align: '' },
 ]
 
+export const placesHead = [
+  { name: 'Image', width: 'w-14', align: 'text-right' },
+  { name: 'Place', width: 'w-40', align: 'text-center' },
+  { name: 'Country', width: 'w-24', align: 'text-left' },
+  { name: 'Created At', width: 'w-32', align: 'text-left' },
+  { name: 'Updated At', width: 'w-28', align: 'text-left' },
+  { name: 'Actions', width: 'w-20', align: 'text-left' },
+]
+
 export const data = [
   {
     "name": "Jan",

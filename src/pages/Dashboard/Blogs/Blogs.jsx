@@ -23,6 +23,8 @@ export const Blogs = () => {
     setActiveSidebarCrud(!activeSidebarCrud)
   }
 
+  console.log(blogs)
+
   return (
     <div className='bg-white shadow-md p-5 rounded-md px-5'>
       <div className='flex flex-row justify-between items-center'>

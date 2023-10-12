@@ -57,6 +57,7 @@ export const Sidebar = () => {
                   ? "bg-cyan-600 rounded-sm"
                   : "bg-transparent "
               }`}
+              onClick={() => setActiveTab(menu.name)}
             >
               <span className="text-white">{menu.icon}</span>
               <span

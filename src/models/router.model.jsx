@@ -21,7 +21,11 @@ export const route = {
   },
   createPlace: {
     title: 'CreatePlace',
-    path: '/createPlace',
+    path: '/createplace',
+  },
+  createBlog: {
+    title: 'CreateBlog',
+    path: '/createblog',
   },
   details: {
     title: 'details',
