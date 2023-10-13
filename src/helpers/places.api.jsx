@@ -7,7 +7,6 @@ export const getPlaces = async() => {
 
 export const getPlaceById = async(id) => {
   const { data } = await axios.get('http://localhost:5000/place/' + id)
-  console.log(data.place)
   return data.place
 }
 

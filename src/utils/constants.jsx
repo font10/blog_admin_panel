@@ -12,7 +12,6 @@ export const menuSidebar = [
 export const menuUserSidebar = [
   { name: 'My Profile', icon: icon_MP, route: route.user.myprofile.path },
   { name: 'Edit Profile', icon: icon_EP, route: route.user.editprofile.path },
-  { name: 'Settings', icon: icon_S, route: route.places.path },
   { name: 'Logout', icon: icon_L, route: route.places.path },
 ]
 

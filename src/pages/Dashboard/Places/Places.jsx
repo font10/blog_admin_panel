@@ -5,11 +5,12 @@ import { useStateContext } from '../../../context/ContextProvider'
 import { AiTwotoneDelete, MdEdit, MdOutlineAddCircleOutline } from '../../../utils/icons'
 import { placesHead } from '../../../utils/constants'
 import { SidebarPlaces } from '../../../components/SidebarPlaces/SidebarPlaces'
+import { SidebarCrud } from '../../../components/SidebarCrud/SidebarCrud'
 
 export const PlacesDash = () => {
   const [places, setPlaces] = useState()
   const [blogToEdit, setBlogToEdit] = useState()
-  const [isAdding, setIsAdding] = useState(true)
+  const [isAdding] = useState(true)
   const { activeSidebarCrud, setActiveSidebarCrud } = useStateContext()
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export const PlacesDash = () => {
           <span className='font-londrina text-md text-white'>Add place</span>
         </button>
       </div>
-      { activeSidebarCrud && <SidebarPlaces id={blogToEdit} isAdding={isAdding} /> }
+      { activeSidebarCrud && <SidebarCrud isAdding={isAdding} /> }
       <div className='w-full overflow-x-auto'>
         <table className='w-full'>
           <thead className='w-full'>
