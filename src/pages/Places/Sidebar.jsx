@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useStateContext } from "../../context/ContextProvider";
 import { BsChevronDoubleRight } from "../../utils/icons";
 import { ImagePicker } from '../../components/ImagePicker/ImagePicker'
-import { getPlaceById } from "../../helpers/places.api";
+import { getPlaceById, getPlaces } from "../../helpers/places.api";
 import { SelectCountries } from "../../components/SelectCountries/SelectCountries";
 
 export const Sidebar = () => {
   const { activeSidebarCrud, idEdit, setActiveSidebarCrud } = useStateContext();
+  const [places, setPlaces] = useState()
   const [inputs, setInputs] = useState({
     country: "",
     place: "",
-    image: "",
+    image: undefined,
   });
 
   const handleSubmit = (e) => {};
@@ -19,9 +20,16 @@ export const Sidebar = () => {
     getPlaceById(idEdit)
       .then(res => setInputs(res))
       .catch(err => console.log(err))
+  },[idEdit])
+
+  useEffect(() => {
+    getPlaces()
+      .then(res => setPlaces(res))
+      .catch(err => console.log(err))
   },[])
 
   const handleInputs = (evt) => {
+    console.log(evt)
     const { name, value } = evt.target;
     setInputs({ ...inputs, [name]: value });
   };
@@ -40,7 +48,7 @@ export const Sidebar = () => {
         <div className="w-full h-92">
           <ImagePicker
             inputs={inputs}
-            setInputs={handleInputs}
+            setInputs={setInputs}
           />
         </div>
         <form encType="multipart/form-data" className="w-full" onSubmit={handleSubmit}>          
@@ -50,6 +58,24 @@ export const Sidebar = () => {
               form={inputs}
               funcForm={setInputs}
             />
+          </div>
+          <div className="px-5">
+            <label className="font-londrina font-regular ml-1">Places</label>
+            <div>
+              <select 
+                name='place' 
+                value={inputs.place} 
+                className='w-full px-5 py-3 border-2 border-gray-200 rounded-md focus:outline-none'
+                onChange={(e) => handleInputs(e)}
+              >
+                {
+                  places && places.map((category) => (
+                    <option key={crypto.randomUUID()} value={category._id}>{category.place}</option>
+                  ))
+                }
+              </select>
+            </div>
+            <button className="mt-3 w-full py-2 rounded-md bg-purple-500 text-white mx-auto flex justify-center">Submit</button>
           </div>
         </form>
       </div>
