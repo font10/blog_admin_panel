@@ -20,12 +20,6 @@ export const Places = () => {
       .catch(err => console.log(err))
   }, [])
 
-  const decideAction = (act, id) => {
-    console.log(id)
-    setAction(act)
-    
-  }
-
   return (
     <div className='flex flex-col bg-white shadow-md p-5 rounded-md px-5'>
       

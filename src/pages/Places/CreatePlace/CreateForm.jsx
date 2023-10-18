@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 export const CreateForm = () => {
   const { token } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-  const [message, setMessage] = useState()
   const [inputs, setInputs] = useState({
     country: '',
     place: '',
@@ -21,12 +20,10 @@ export const CreateForm = () => {
   const handleInputs = (e) => {
     const { name, value } = e.target
     setInputs({ ...inputs, [name]: value })
-    console.log(inputs)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(inputs)
 
     const formData = new FormData()  
     let filename = null
@@ -55,11 +52,10 @@ export const CreateForm = () => {
             transition: Zoom,
             autoClose: 1500,
             theme: "colored",
-        })
-        setTimeout(() => {
-            dispatch(closeModal(false))
-        }, 1700);
-         setMessage(res.message)
+          })
+          setTimeout(() => {
+              dispatch(closeModal(false))
+          }, 1700);
         }) 
         .catch(err => toast.success(err, {
           position: toast.POSITION.TOP_CENTER,

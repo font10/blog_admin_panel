@@ -16,7 +16,7 @@ export const appSlice = createSlice({
       state.modal = action.payload
     },
     changeId(state, action) {
-      state.modal = action.payload
+      state.id = action.payload
     }
   }
 })
