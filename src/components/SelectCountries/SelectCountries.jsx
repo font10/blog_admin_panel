@@ -6,7 +6,7 @@ export const SelectCountries = ({ form, funcForm }) => {
 
   useEffect(() => {
     getListCountries()
-      .then(res => setCountries(res))
+      .then(res => { setCountries(res); funcForm({...form, 'country': res[0].country }) } )
       .catch(err => console.log(err))
   }, []) 
 
@@ -20,12 +20,13 @@ export const SelectCountries = ({ form, funcForm }) => {
       <select 
         name='country' 
         value={form.country} 
-        className='w-full px-5 py-3 border-2 border-gray-200 rounded-md focus:outline-none'
+        required
+        className='w-full px-5 py-3 border-2 border-gray-200 text-black rounded-md focus:outline-none'
         onChange={(e) => handleInputs(e)}
       >
         {
-          countries && countries.map((category) => (
-            <option key={crypto.randomUUID()} value={category.country}>{category.country}</option>
+          countries && countries.map((item) => (
+            <option key={crypto.randomUUID()} value={item.country}>{item.country}</option>
           ))
         }
       </select>

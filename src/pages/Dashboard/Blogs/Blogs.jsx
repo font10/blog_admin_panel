@@ -4,7 +4,6 @@ import { profile } from '../../../utils/images'
 import { formatDate, getIconCategory } from '../../../utils/functions'
 import { blogsHead } from '../../../utils/constants'
 import { AiTwotoneDelete, MdEdit } from '../../../utils/icons'
-import { SidebarCrud } from '../../../components/SidebarCrud/SidebarCrud'
 import { useStateContext } from '../../../context/ContextProvider'
 
 export const Blogs = () => {
@@ -23,15 +22,12 @@ export const Blogs = () => {
     setActiveSidebarCrud(!activeSidebarCrud)
   }
 
-  console.log(blogs)
-
   return (
     <div className='bg-white shadow-md p-5 rounded-md px-5'>
       <div className='flex flex-row justify-between items-center'>
         <span className="font-londrina font-regular text-2xl">Blogs</span>
         <input type='text' placeholder='Search...' className='w-4/12 border-2 border-gray-200 rounded-md py-1.5 ps-5 font-londrina font-light focus:outline-none ' />
       </div>
-      { activeSidebarCrud && <SidebarCrud blog={blogToEdit} /> }
       <section className="flex flex-row w-full mt-3 gap-3 overflow-x-auto">
         <table className='w-full'>
           <thead className='w-full'>

@@ -3,12 +3,16 @@ import { getPlaces } from '../../helpers/places.api'
 import { formatDate, } from '../../utils/functions'
 import { AiTwotoneDelete, MdEdit, MdOutlineAddCircleOutline } from '../../utils/icons'
 import { placesHead } from '../../utils/constants'
-import { useStateContext } from '../../context/ContextProvider'
-import { LayoutSidebarCrud } from '../../components/Layout/LayoutSidebarCrud'
+import { useDispatch, useSelector } from 'react-redux'
+import { activeModal, changeId } from '../../redux/appSlice'
+import { Modal } from '../../components/Modal/Modal'
+import { ToastContainer } from 'react-toastify'
 
-export const Places = () => {
+export const Places = () => { 
+  const dispatch = useDispatch()
   const [places, setPlaces] = useState()
-  const { activeSidebarCrud, changeIdEdit, setActiveSidebarCrud } = useStateContext(false)
+  const [action, setAction] = useState('Add')
+  const { modal } = useSelector((state) => state.app)
   
   useEffect(() => {
     getPlaces()
@@ -16,25 +20,30 @@ export const Places = () => {
       .catch(err => console.log(err))
   }, [])
 
-  const handler = (id, isAdding) => {
-    if(!isAdding) changeIdEdit(id)
-    else changeIdEdit(undefined)
-    setActiveSidebarCrud(!activeSidebarCrud)
+  const decideAction = (act, id) => {
+    console.log(id)
+    setAction(act)
+    
   }
 
   return (
     <div className='flex flex-col bg-white shadow-md p-5 rounded-md px-5'>
+      
       <div className='flex flex-row justify-between items-center'>  
         <span className="font-londrina font-regular ml-5 text-2xl">
           Places          
         </span>
-        <button className='flex flex-row gap-2 items-center bg-cyan-600 px-4 py-1.5 rounded-md text-white hover:bg-cyan-500 cursor-pointer' onClick={() => handler(undefined, true) }>
-          <MdOutlineAddCircleOutline className='text-white' size={20}/> 
+        <button className='flex flex-row gap-2 items-center bg-cyan-600 px-4 py-1.5 rounded-md text-white hover:bg-cyan-500 cursor-pointer' onClick={ () => { setAction('Add'); dispatch(activeModal(true)) } } >
+          <MdOutlineAddCircleOutline className='text-white' size={20}/>
           <span className='font-londrina text-md text-white'>Add place</span>
         </button>
       </div>
       
-      { activeSidebarCrud && <LayoutSidebarCrud value='Places' /> }
+      { modal && 
+        <Modal action={action} />
+      }
+      
+      <ToastContainer />
       <div className='w-full overflow-x-auto'>
         <table className='w-full'>
           <thead className='w-full'>
@@ -63,7 +72,7 @@ export const Places = () => {
                   <th className='font-londrina text-sm font-extralight w-28'>{formatDate(place.createdAt)}</th>
                   <th className='font-londrina text-sm font-extralight w-28'>{formatDate(place.updatedAt)}</th>
                   <th className='flex flex-row items-center gap-2 font-londrina text-sm font-extralight w-20'>
-                    <div className='bg-[#c9f3f2] p-1.5 rounded-full cursor-pointer' onClick={() => handler(place._id, false)}><MdEdit className='text-[#3ec7c1]' size={20} /></div>
+                    <div className='bg-[#c9f3f2] p-1.5 rounded-full cursor-pointer' onClick={ () => { setAction('Edit'); dispatch(activeModal(true)); dispatch(changeId(place._id)) } }><MdEdit className='text-[#3ec7c1]' size={20} /></div>
                     <div className='bg-[#ffdede] p-1.5 rounded-full cursor-pointer'><AiTwotoneDelete className='text-[#ff7f87]' size={20} /></div>
                   </th>
                 </tr>

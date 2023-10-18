@@ -15,7 +15,14 @@ export const addPlace = async(token, newPlace) => {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`
   }} )
+  return data
+}
 
+export const editPlace = async(token, id, editPlace) => {
+  const { data } = await axios.put(('http://localhost:5000/place/' + id), editPlace, { headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  }} )
   return data
 }
 
