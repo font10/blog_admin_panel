@@ -26,6 +26,14 @@ export const editPlace = async(token, id, editPlace) => {
   return data
 }
 
+export const deletePlace = async(token, id) => {
+  const { data } = await axios.delete(('http://localhost:5000/place/' + id), { headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  }} )
+  return data
+}
+
 export const getCountries = async() => {
   const { data } = await axios.get('https://countriesnow.space/api/v0.1/countries')
   return data.data

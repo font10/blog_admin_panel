@@ -1,24 +1,49 @@
 import React, { useEffect, useState } from 'react'
-import { getPlaces } from '../../helpers/places.api'
+import { deletePlace, getPlaces } from '../../helpers/places.api'
 import { formatDate, } from '../../utils/functions'
 import { AiTwotoneDelete, MdEdit, MdOutlineAddCircleOutline } from '../../utils/icons'
 import { placesHead } from '../../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
-import { activeModal, changeId } from '../../redux/appSlice'
+import { activeModal, changeId, toggleActionCheck } from '../../redux/appSlice'
 import { Modal } from '../../components/Modal/Modal'
 import { ToastContainer } from 'react-toastify'
+import { Zoom, toast } from 'react-toastify'
 
 export const Places = () => { 
   const dispatch = useDispatch()
   const [places, setPlaces] = useState()
   const [action, setAction] = useState('Add')
-  const { modal } = useSelector((state) => state.app)
+  const { modal, actionCheck } = useSelector((state) => state.app)
+  const { token } = useSelector((state) => state.auth)
   
   useEffect(() => {
     getPlaces()
-      .then(res => setPlaces(res) )
+      .then(res => { setPlaces(res); console.log(res) } )
       .catch(err => console.log(err))
-  }, [])
+  }, [actionCheck])
+
+  const handlerDeletePlace = (id) => {
+    deletePlace(token, id)
+      .then(res => {
+        toast.success(res.message, {
+          position: toast.POSITION.TOP_CENTER,
+          className: 'foo-bar text-lg font-medium font-bahnschrift',
+          transition: Zoom,
+          autoClose: 1500,
+          theme: "colored",
+        })
+        setTimeout(() => {
+          dispatch(toggleActionCheck())
+        }, 500);
+      })
+      .catch(err => toast.error(err, {
+        position: toast.POSITION.TOP_CENTER,
+        className: 'foo-bar text-lg font-medium font-bahnschrift',
+        transition: Zoom,
+        autoClose: 1500,
+        theme: "colored",
+    }))
+  }
 
   return (
     <div className='flex flex-col bg-white shadow-md p-5 rounded-md px-5'>
@@ -67,7 +92,7 @@ export const Places = () => {
                   <th className='font-londrina text-sm font-extralight w-28'>{formatDate(place.updatedAt)}</th>
                   <th className='flex flex-row items-center gap-2 font-londrina text-sm font-extralight w-20'>
                     <div className='bg-[#c9f3f2] p-1.5 rounded-full cursor-pointer' onClick={ () => { setAction('Edit'); dispatch(activeModal(true)); dispatch(changeId(place._id)) } }><MdEdit className='text-[#3ec7c1]' size={20} /></div>
-                    <div className='bg-[#ffdede] p-1.5 rounded-full cursor-pointer'><AiTwotoneDelete className='text-[#ff7f87]' size={20} /></div>
+                    <div className='bg-[#ffdede] p-1.5 rounded-full cursor-pointer'><AiTwotoneDelete className='text-[#ff7f87]' size={20} onClick={() => handlerDeletePlace(place._id)} /></div>
                   </th>
                 </tr>
               ))

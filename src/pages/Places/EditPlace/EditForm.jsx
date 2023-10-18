@@ -5,7 +5,7 @@ import { ImagePicker } from '../../../components/ImagePicker/ImagePicker'
 import { uploadImage } from '../../../helpers/files.api'
 import { editPlace, getPlaceById } from '../../../helpers/places.api'
 import { useDispatch, useSelector } from 'react-redux'
-import { closeModal } from '../../../redux/appSlice'
+import { closeModal, toggleActionCheck } from '../../../redux/appSlice'
 import { Zoom, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -34,8 +34,6 @@ export const EditForm = () => {
 
     const formData = new FormData()  
     let filename = null
-
-    console.log(inputs)
 
     if(typeof inputs.image === 'object') {
       console.log('Change image')
@@ -66,8 +64,7 @@ export const EditForm = () => {
       }
     }
 
-    console.log(updPlace)
-    editPlace(token, id, updPlace)
+    await editPlace(token, id, updPlace)
         .then(res => { 
           toast.success(res.message, {
             position: toast.POSITION.TOP_CENTER,
@@ -76,9 +73,15 @@ export const EditForm = () => {
             autoClose: 1500,
             theme: "colored",
           })
-          setTimeout(() => {
-              dispatch(closeModal(false))
-          }, 1700);
+          setTimeout(() => {              
+            dispatch(toggleActionCheck())
+            setInputs({
+              country: '',
+              place: '',
+              image: undefined,
+            })
+            dispatch(closeModal(false))
+          }, 500);
         }) 
         .catch(err => toast.error(err, {
           position: toast.POSITION.TOP_CENTER,

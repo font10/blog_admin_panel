@@ -4,7 +4,7 @@ import { ImagePicker } from '../../../components/ImagePicker/ImagePicker'
 import { uploadImage } from '../../../helpers/files.api'
 import { addPlace } from '../../../helpers/places.api'
 import { useDispatch, useSelector } from 'react-redux'
-import { closeModal } from '../../../redux/appSlice'
+import { closeModal, toggleActionCheck } from '../../../redux/appSlice'
 import { Zoom, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -54,10 +54,16 @@ export const CreateForm = () => {
             theme: "colored",
           })
           setTimeout(() => {
-              dispatch(closeModal(false))
-          }, 1700);
+            dispatch(toggleActionCheck())
+            setInputs({
+              country: '',
+              place: '',
+              image: undefined,
+            })
+            dispatch(closeModal(false))
+          }, 500);
         }) 
-        .catch(err => toast.success(err, {
+        .catch(err => toast.error(err, {
           position: toast.POSITION.TOP_CENTER,
           className: 'foo-bar text-lg font-medium font-bahnschrift',
           transition: Zoom,
