@@ -32,15 +32,15 @@ export const categoriesSearch = [
 ]
 
 export const blogsHead = [ 
-  { name: 'Image', width: 'w-10', align: ''},
+  { name: 'Image', width: 'w-14', align: 'text-right'},
   { name: 'Title', width: 'w-32', align: ''},
-  { name: 'Description', width: 'w-48', align: ''},
-  { name: 'Category', width: 'w-20', align: ''},
-  { name: 'Country', width: 'w-24', align: 'text-left'},
-  { name: 'Place', width: 'w-24', align: ''},
-  { name: 'User', width: 'w-20', align: ''},
-  { name: 'Created At', width: 'w-20', align: ''},
-  { name: 'Updated At', width: 'w-20', align: ''  },
+  { name: 'Description', width: 'w-52', align: 'text-center'},
+  { name: 'Category', width: 'w-20', align: 'text-left'},
+  { name: 'Country', width: 'w-24', align: 'text-center'},
+  { name: 'Place', width: 'w-24', align: 'text-center'},
+  { name: 'User', width: 'w-20', align: 'text-center'},
+  { name: 'Created At', width: 'w-28', align: 'text-center'},
+  { name: 'Updated At', width: 'w-28', align: 'text-center'  },
   { name: 'Actions', width: 'w-20', align: 'text-left'  }
 ]
 

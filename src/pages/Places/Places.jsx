@@ -18,7 +18,7 @@ export const Places = () => {
   
   useEffect(() => {
     getPlaces()
-      .then(res => { setPlaces(res); console.log(res) } )
+      .then(res => setPlaces(res) )
       .catch(err => console.log(err))
   }, [actionCheck])
 

@@ -1,5 +1,5 @@
 import { Auth } from "./Auth/Auth";
-import { Blogs } from "./Dashboard/Blogs/Blogs";
+import { Blogs } from "./Blogs/Blogs";
 import { CreateBlog } from "./Dashboard/Blogs/Create/CreateBlog"
 import { CreateForm } from "./Places/CreatePlace/CreateForm";
 import { Comments } from "./Comments/Comments";
