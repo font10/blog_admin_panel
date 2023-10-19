@@ -5,7 +5,7 @@ export const ImagePicker = ({ inputs, setInputs }) => {
   const [preview, setPreview] = useState(undefined);
   const [imageModified, setImageModified] = useState(false);
   const hiddenFileInput = useRef(null)
-
+  
   useEffect(() => {
     if(inputs) {
       if (!inputs.image) {
@@ -14,15 +14,13 @@ export const ImagePicker = ({ inputs, setInputs }) => {
       }
 
       let objectUrl = null
-      if(inputs.image)
-      objectUrl = URL.createObjectURL(new Blob([inputs.image]), {
-        type: "application/zip",
-      });
-      setPreview(objectUrl);
+      if(inputs.image) {
+        objectUrl = URL.createObjectURL(new Blob([inputs.image]), {
+          type: "application/zip",
+        });
+        setPreview(objectUrl);
+      }
 
-      return () => {
-        URL.revokeObjectURL(objectUrl);
-      };
     }
   }, [inputs]);
 

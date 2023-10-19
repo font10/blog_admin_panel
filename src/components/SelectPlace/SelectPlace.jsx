@@ -6,7 +6,7 @@ export const SelectPlace = ({ form, funcForm }) => {
 
   useEffect(() => {
     getPlaces()
-      .then(res => { setPlaces(res); funcForm({...form, 'place': res[0].place }) })
+      .then(res => { setPlaces(res); funcForm({...form, place: res[0].place }) })
       .catch(err => console.log(err))
   },[])
 
