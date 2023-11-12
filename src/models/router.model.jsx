@@ -15,10 +15,6 @@ export const route = {
     title: 'places',
     path: '/places',
   },
-  comments: {
-    title: 'comments',
-    path: '/comments',
-  },
   createPlace: {
     title: 'CreatePlace',
     path: '/createplace',
@@ -27,17 +23,9 @@ export const route = {
     title: 'CreateBlog',
     path: '/createblog',
   },
-  details: {
-    title: 'details',
-    path: '/details',
-  },
   blogs: {
     title: 'Blogs',
     path: '/blogs',
-  },
-  images: {
-    title: 'images',
-    path: '/images',
   },
   user: {
     myprofile: {

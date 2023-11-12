@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getListCountries } from '../../helpers/blog.api'
+import { getListCountries } from '../../services/blog.api'
 
 export const SelectCountries = ({ form, funcForm }) => {
   const [countries, setCountries] = useState([])
@@ -14,9 +14,9 @@ export const SelectCountries = ({ form, funcForm }) => {
     const { name, value } = evt.target;
     funcForm({ ...form, [name]: value });
   };
-
+  
   return (
-    <div className='mt-2'>
+    <div className='mt-1'>
       <select 
         name='country' 
         value={form.country} 

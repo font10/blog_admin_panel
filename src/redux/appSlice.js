@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   modal: false,
+  modalUser: false,
   id: '',
   actionCheck: false
 }
@@ -16,6 +17,12 @@ export const appSlice = createSlice({
     closeModal(state, action) {
       state.modal = action.payload
     },
+    activeModalUser(state, action) {
+      state.modalUser = action.payload
+    },
+    closeModalUser(state, action) {
+      state.modalUser = action.payload
+    },    
     changeId(state, action) {
       state.id = action.payload
     },
@@ -25,6 +32,6 @@ export const appSlice = createSlice({
   }
 })
 
-export const { activeModal, changeId, closeModal, toggleActionCheck } = appSlice.actions
+export const { activeModal, activeModalUser, changeId, closeModal, closeModalUser, toggleActionCheck } = appSlice.actions
 
 export default appSlice.reducer

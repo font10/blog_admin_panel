@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Collapse } from "react-collapse";
 
 export const UserMenu = ({ activeMenu, isDropUser, setIsDropUser }) => {
+
   return (
     <div className="relative overflow-hidden w-full">
       <div className="flex flex-row justify-between items-center mt-4 text-white p-2 transition duration-500 ease-in-out">
@@ -16,7 +17,7 @@ export const UserMenu = ({ activeMenu, isDropUser, setIsDropUser }) => {
               activeMenu ? "block" : "hidden"
             } font-londrina font-light`}
           >
-            David Font
+            Hola
           </span>
         </div>
         {isDropUser ? (

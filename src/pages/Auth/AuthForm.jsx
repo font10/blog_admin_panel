@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from '../../utils/icons'
-import { userAuthRequest } from '../../helpers/user.api'
+import { userAuthRequest } from '../../services/user.api'
 import { useDispatch } from 'react-redux'
 import { login } from '../../redux/authSlice'
 import { useNavigate } from 'react-router-dom'
@@ -25,6 +25,7 @@ export const AuthForm = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
+    console.log(inputs)
     userAuthRequest(inputs, isSignUp)
       .then(res => {
         if(isSignUp) { dispatch(login(res)); navigate( route.root.path ) }

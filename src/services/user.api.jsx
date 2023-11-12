@@ -15,3 +15,12 @@ export const userAuthRequest = async(data, isSignUp) => {
   
     return res
 }
+
+export const editUser = async(token, id, editUser) => {
+  console.log(id)
+  const { data } = await axios.patch(('http://localhost:5000/user/' + id), editUser, { headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  }} )
+  return data
+}

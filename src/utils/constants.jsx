@@ -1,17 +1,14 @@
 import { route } from '../models/router.model'
-import { AiOutlineComment, HiOutlineDocumentText, BsCardImage, MdDashboard, MdPlace } from './icons'
-import { cascada, castillo, icon_EP, icon_L, icon_MP, icon_S, montana, sombrilla, via_lactea } from './images'
+import { HiOutlineDocumentText, BsCardImage, MdDashboard, MdPlace } from './icons'
+import { cascada, castillo, icon_EP, icon_L, icon_MP, montana, sombrilla, via_lactea } from './images'
 
 export const menuSidebar = [
   { name: 'Home', icon: <MdDashboard size={26} />, route: route.root.path },
   { name: 'Blogs', icon: <HiOutlineDocumentText size={26} />, route: route.blogs.path },
   { name: 'Places', icon: <MdPlace size={26} />, route: route.places.path },
-  { name: 'Comments', icon: <AiOutlineComment size={26} />, route: route.comments.path },
-  { name: 'Images', icon: <BsCardImage size={26} />, route: route.images.path },
 ]
 export const menuUserSidebar = [
   { name: 'My Profile', icon: icon_MP, route: route.user.myprofile.path },
-  { name: 'Edit Profile', icon: icon_EP, route: route.user.editprofile.path },
   { name: 'Logout', icon: icon_L, route: route.places.path },
 ]
 

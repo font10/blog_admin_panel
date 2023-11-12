@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { SelectCountries } from '../../../components/SelectCountries/SelectCountries'
 import { SelectPlace } from '../../../components/SelectPlace/SelectPlace'
 import { ImagePicker } from '../../../components/ImagePicker/ImagePicker'
-import { uploadImage } from '../../../helpers/files.api'
-import { editPlace, getPlaceById } from '../../../helpers/places.api'
+import { uploadImage } from '../../../services/files.api'
+import { editPlace, getPlaceById } from '../../../services/places.api'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeModal, toggleActionCheck } from '../../../redux/appSlice'
 import { Zoom, toast } from 'react-toastify'
@@ -116,6 +116,7 @@ export const EditForm = () => {
               <SelectPlace
                 form={inputs}
                 funcForm={setInputs}
+                page='Place'
               />
             </div>
           </div>
