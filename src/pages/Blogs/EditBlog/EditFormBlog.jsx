@@ -63,22 +63,18 @@ export const EditFormBlog = () => {
     } else console.log('No changed image')
 
     if(inputs.image && typeof inputs.image === 'object') {
-      filename = crypto.randomUUID() + '_' + inputs.image.name
-      formData.append("filename", filename)
       formData.append("image", inputs.image)
 
-      await uploadImage(formData)
-        .then(res => console.log(res))
-        .catch(err => console.log(err)) 
-    }
+      const url = await uploadImage(token, formData)
 
+      
     let updPlace = {}
     if(typeof inputs.image === 'object') {
       updPlace = {
         country: inputs.country,
         category: inputs.category,
         desc: inputs.desc,
-        image: filename,
+        image: url,
         place: inputs.place,
         title: inputs.title
       }
@@ -119,6 +115,10 @@ export const EditFormBlog = () => {
           autoClose: 1500,
           theme: "colored",
       }))
+    }
+
+
+    
   }
   
   return (

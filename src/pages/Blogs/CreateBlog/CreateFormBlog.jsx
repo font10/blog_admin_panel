@@ -11,8 +11,8 @@ import { categories } from '../../../utils/constants'
 import { addBlog } from '../../../services/blog.api'
 
 export const CreateFormBlog = () => {
-  const { token } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
+  const { user, token } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()  
   const [places, setPlaces] = useState()
   const [inputs, setInputs] = useState({
     country: 'Afghanistan',
@@ -26,45 +26,44 @@ export const CreateFormBlog = () => {
   useEffect(() => {
     getPlaces()
       .then(res => {
-        setPlaces(res);
+        setPlaces(res)
+        console.log(res)
         setInputs({...inputs, place: res[0]._id})        
       })
       .catch(err => console.log(err))
   }, [])
   
-
   const handleInputs = (e) => {
     const { name, value } = e.target
     setInputs({ ...inputs, [name]: value })
   }
+
+  console.log(inputs)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(inputs)
 
     const formData = new FormData()  
-    let filename = null
 
     if(inputs.image) {
-      filename = crypto.randomUUID() + '_' + inputs.image.name
-      formData.append("filename", filename)
       formData.append("image", inputs.image)
 
-      await uploadImage(formData)
-        .then(res => console.log(res))
-        .catch(err => console.log(err)) 
-    } else return
+      const url = await uploadImage(token, formData)
 
-    const newBlog = {
-      country: inputs.country,
-      category: categories[0],
-      place: inputs.place,
-      image: filename,
-      desc: inputs.desc,
-      title: inputs.title,
-    }
+      const newBlog = {
+        country: inputs.country,
+        category: categories[0],
+        place: inputs.place,
+        image: url,
+        desc: inputs.desc,
+        title: inputs.title,
+        userId: user._id
+      }
 
-    addBlog(token, newBlog)
+      console.log(newBlog)
+
+      await addBlog(token, newBlog)
       .then(res => { 
         toast.success(res.message, {
           position: toast.POSITION.TOP_CENTER,
@@ -93,6 +92,7 @@ export const CreateFormBlog = () => {
         autoClose: 1500,
         theme: "colored",
       }))
+    } else return
   }
   
   return (

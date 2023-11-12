@@ -6,7 +6,7 @@ export const SelectCountries = ({ form, funcForm }) => {
 
   useEffect(() => {
     getListCountries()
-      .then(res => { setCountries(res); funcForm({...form, country: res[0].country }) } )
+      .then(res => { setCountries(res); } )
       .catch(err => console.log(err))
   }, []) 
 

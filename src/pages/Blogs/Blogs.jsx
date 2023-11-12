@@ -84,7 +84,7 @@ export const Blogs = () => {
                 <tr key={crypto.randomUUID()} className='flex flex-row gap-3 px-5 justify-between items-center w-full mt-5'>
                   <th className='font-londrina text-sm font-extralight'>
                     <img 
-                      src={`http://localhost:5000/images/` + blog.image.split('_').splice(1).join(' ')} 
+                      src={blog.image} 
                       alt='images uploaded'
                       className='rounded-[500px] h-10 w-10' 
                     />
