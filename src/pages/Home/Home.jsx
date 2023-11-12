@@ -1,11 +1,7 @@
 import React from "react";
-import { Blogs, ImagesDash, Overview, Places } from "../index";
-import { useLocation } from "react-router-dom";
-
+import { Blogs, Overview, Places } from "../index";
 
 export const Home = () => {
-  const location = useLocation()
-
   return (
     <div className="flex flex-col">
       <div className="flex flex-row gap-3">

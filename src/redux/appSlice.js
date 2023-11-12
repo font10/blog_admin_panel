@@ -4,7 +4,9 @@ const initialState = {
   modal: false,
   modalUser: false,
   id: '',
-  actionCheck: false
+  actionCheck: false,
+  blogsLength: 0,
+  placesLength: 0,
 }
 
 export const appSlice = createSlice({
@@ -28,10 +30,16 @@ export const appSlice = createSlice({
     },
     toggleActionCheck(state) {
       state.actionCheck =!state.actionCheck
+    },
+    setBlogsLength(state, action) {
+      state.blogsLength = action.payload
+    },
+    setPlacesLength(state, action) {
+      state.placesLength = action.payload
     }
   }
 })
 
-export const { activeModal, activeModalUser, changeId, closeModal, closeModalUser, toggleActionCheck } = appSlice.actions
+export const { activeModal, activeModalUser, changeId, closeModal, closeModalUser, toggleActionCheck, blogsLength, placesLength, setBlogsLength, setPlacesLength } = appSlice.actions
 
 export default appSlice.reducer

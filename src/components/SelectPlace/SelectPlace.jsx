@@ -8,7 +8,6 @@ export const SelectPlace = ({ form, funcForm, page }) => {
     getPlaces()
       .then(res => {
         setPlaces(res);
-        console.log(res)
         if(page !== 'Place') funcForm({ ...form, place: res[0].place })
       })
       .catch(err => console.log(err))
@@ -16,7 +15,6 @@ export const SelectPlace = ({ form, funcForm, page }) => {
 
   const handleInputs = (evt) => {
     const { name, value } = evt.target;
-    console.log(value)
     funcForm({ ...form, [name]: value });
   };
 

@@ -4,7 +4,7 @@ import { formatDate, } from '../../utils/functions'
 import { AiTwotoneDelete, MdEdit, MdOutlineAddCircleOutline } from '../../utils/icons'
 import { placesHead } from '../../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
-import { activeModal, changeId, toggleActionCheck } from '../../redux/appSlice'
+import { activeModal, changeId, setPlacesLength, toggleActionCheck } from '../../redux/appSlice'
 import { Modal } from '../../components/Modal/Modal'
 import { ToastContainer } from 'react-toastify'
 import { Zoom, toast } from 'react-toastify'
@@ -20,7 +20,7 @@ export const Places = () => {
   
   useEffect(() => {
     getPlaces()
-      .then(res => setPlaces(res) )
+      .then(res => { setPlaces(res); dispatch(setPlacesLength(res.length)) } )
       .catch(err => console.log(err))
   }, [actionCheck])
 
@@ -85,7 +85,7 @@ export const Places = () => {
                 <tr key={crypto.randomUUID()} className='flex flex-row gap-3 px-5 justify-between items-center w-full mt-5'>
                   <th className='font-londrina text-sm font-extralight'>
                     <img 
-                      src={`http://localhost:5000/images/` + place.image.split('_').splice(1).join(' ')} 
+                      src={place.image} 
                       alt='images uploaded'
                       className='rounded-[500px] h-10 w-10' 
                     />

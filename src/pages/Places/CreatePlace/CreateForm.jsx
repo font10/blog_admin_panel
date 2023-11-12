@@ -25,26 +25,20 @@ export const CreateForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const formData = new FormData()  
-    let filename = null
+    const formData = new FormData()
 
     if(inputs.image) {
-      filename = crypto.randomUUID() + '_' + inputs.image.name
-      formData.append("filename", filename)
       formData.append("image", inputs.image)
 
-      await uploadImage(formData)
-        .then(res => console.log(res))
-        .catch(err => console.log(err)) 
-    } else return
+      const url = await uploadImage(token, formData)
 
-    const newPlace = {
-      country: inputs.country,
-      place: inputs.place,
-      image: filename
-    }
+      const newPlace = {
+        country: inputs.country,
+        place: inputs.place,
+        image: url
+      }
 
-    addPlace(token, newPlace)
+      addPlace(token, newPlace)
         .then(res => { 
           toast.success(res.message, {
             position: toast.POSITION.TOP_CENTER,
@@ -70,6 +64,8 @@ export const CreateForm = () => {
           autoClose: 1500,
           theme: "colored",
       }))
+    } else return
+
   }
   
   return (

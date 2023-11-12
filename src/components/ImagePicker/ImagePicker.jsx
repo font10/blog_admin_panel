@@ -43,7 +43,7 @@ export const ImagePicker = ({ inputs, setInputs }) => {
         preview && inputs.image 
       ?   <div>        
             <AiOutlineCloseCircle onClick={() => handleCloseImg()} size={20} className="absolute right-5 top-16 z-20 text-white hover:text-slate-400 hover:rounded-full cursor-pointer" />
-            <img src={ imageModified ? preview : `http://localhost:5000/images/` + inputs.image.split('_').splice(1).join(' ') } height={250} className="w-full max-h-72 rounded-sm object-cover" alt="" onClick={handleClick} />
+            <img src={ imageModified ? preview : inputs.image } height={250} className="w-full max-h-72 rounded-sm object-cover" alt="" onClick={handleClick} />
             
             <input id="dropzone-file" type="file" className="absolute hidden right-0 w-full h-[290px] z-6" ref={hiddenFileInput} onChange={onChangeFile} />
           </div>

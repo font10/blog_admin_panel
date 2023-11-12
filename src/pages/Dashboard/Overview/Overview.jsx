@@ -1,11 +1,13 @@
 import React from "react";
 import { icon_B, icon_P } from "../../../utils/images";
 import { AreaChartComp } from "../../../components";
+import { useSelector } from "react-redux";
 
 export const Overview = () => {
+  const { blogsLength, placesLength } = useSelector(state => state.app)
   const overviewInfo = [
-    { title: "Blogs", img: icon_B, quantity: 30 },
-    { title: "Places", img: icon_P, quantity: 22 },
+    { title: "Blogs", img: icon_B, quantity: blogsLength },
+    { title: "Places", img: icon_P, quantity: placesLength },
   ];
 
   return (

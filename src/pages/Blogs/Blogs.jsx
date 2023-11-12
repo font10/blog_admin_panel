@@ -3,7 +3,7 @@ import { formatDate, } from '../../utils/functions'
 import { AiTwotoneDelete, MdEdit, MdOutlineAddCircleOutline } from '../../utils/icons'
 import { blogsHead } from '../../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
-import { activeModal, changeId, toggleActionCheck } from '../../redux/appSlice'
+import { activeModal, changeId, setBlogsLength, toggleActionCheck } from '../../redux/appSlice'
 import { Modal } from '../../components/Modal/Modal'
 import { ToastContainer } from 'react-toastify'
 import { Zoom, toast } from 'react-toastify'
@@ -20,7 +20,7 @@ export const Blogs = () => {
   
   useEffect(() => {
     getBlogs()
-      .then(res => setBlogs(res) )
+      .then(res => { setBlogs(res); dispatch(setBlogsLength(res.length)) })
       .catch(err => console.log(err))
   }, [actionCheck])
 
