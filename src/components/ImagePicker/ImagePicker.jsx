@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { AiOutlineCloseCircle } from "../../utils/icons";
 
 export const ImagePicker = ({ inputs, setInputs }) => {
   const [preview, setPreview] = useState(undefined);

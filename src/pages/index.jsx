@@ -1,5 +1,7 @@
 import { Auth } from "./Auth/Auth";
 import { Blogs } from "./Blogs/Blogs";
+import { CreateFormBlog } from "./Blogs/CreateBlog/CreateFormBlog";
+import { EditFormBlog } from "./Blogs/EditBlog/EditFormBlog";
 import { CreateForm } from "./Places/CreatePlace/CreateForm";
 import { EditProfileForm } from "./User/EditProfile/EditProfileForm";
 import { EditForm } from "./Places/EditPlace/EditForm";
@@ -12,7 +14,9 @@ export {
   Auth,
   Blogs,
   CreateForm,
+  CreateFormBlog,
   EditForm,
+  EditFormBlog,
   EditProfileForm,
   Home,
   MyProfile,

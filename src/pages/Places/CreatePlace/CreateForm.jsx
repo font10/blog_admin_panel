@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { SelectCountries } from '../../../components/SelectCountries/SelectCountries'
-import { ImagePicker } from '../../../components/ImagePicker/ImagePicker'
+import { ImagePicker, SelectCountries } from '../../../components/index'
 import { uploadImage } from '../../../services/files.api'
 import { addPlace } from '../../../services/places.api'
 import { useDispatch, useSelector } from 'react-redux'

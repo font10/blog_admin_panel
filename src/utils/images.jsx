@@ -9,6 +9,7 @@ import icon_L from '../assets/icons/icon_L.png'
 import icon_MP from '../assets/icons/icon_MP.png'
 import icon_P from '../assets/icons/icon_P.png'
 import icon_S from '../assets/icons/icon_S.png'
+import loading from "../assets/images/loading.json";
 import montana from '../assets/icons/montana.png'
 import noImage from '../assets/images/no_image.PNG'
 import profile from '../assets/images/profile.png'
@@ -27,6 +28,7 @@ export {
   icon_MP,
   icon_P,
   icon_S,
+  loading,
   montana,
   noImage,
   profile,

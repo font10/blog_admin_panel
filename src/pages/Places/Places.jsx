@@ -5,7 +5,7 @@ import { AiTwotoneDelete, MdEdit, MdOutlineAddCircleOutline } from '../../utils/
 import { placesHead } from '../../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { activeModal, changeId, setPlacesLength, toggleActionCheck } from '../../redux/appSlice'
-import { Modal } from '../../components/Modal/Modal'
+import { Modal } from '../../components/index'
 import { ToastContainer } from 'react-toastify'
 import { Zoom, toast } from 'react-toastify'
 import { useLocation } from 'react-router-dom'

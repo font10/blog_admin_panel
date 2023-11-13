@@ -2,7 +2,7 @@ import React from 'react'
 import { AiOutlineCloseCircle } from '../../utils/icons'
 import { useDispatch } from 'react-redux'
 import { closeModalUser } from '../../redux/appSlice'
-import { EditProfileForm } from '../../pages/User/EditProfile/EditProfileForm'
+import { EditProfileForm } from '../../pages/index'
 
 export const ModalUser = () => {
   const dispatch = useDispatch()

@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { SelectPlace } from '../../../components/SelectPlace/SelectPlace'
-import { ImagePicker } from '../../../components/ImagePicker/ImagePicker'
+import { ImagePicker, SelectPlace } from '../../../components/index'
 import { uploadImage } from '../../../services/files.api'
 import { editPlace, getPlaceById } from '../../../services/places.api'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeModal, toggleActionCheck } from '../../../redux/appSlice'
 import { Zoom, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 import { getListCountries } from '../../../services/blog.api'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const EditForm = () => {
   const { token } = useSelector((state) => state.auth)

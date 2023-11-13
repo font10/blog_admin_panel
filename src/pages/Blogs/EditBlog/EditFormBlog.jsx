@@ -1,16 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { SelectCountries } from '../../../components/SelectCountries/SelectCountries'
-import { SelectPlace } from '../../../components/SelectPlace/SelectPlace'
-import { ImagePicker } from '../../../components/ImagePicker/ImagePicker'
+import { ImagePicker, Loading, SelectCountries } from '../../../components/index'
 import { uploadImage } from '../../../services/files.api'
 import { getPlaces } from '../../../services/places.api'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeModal, toggleActionCheck } from '../../../redux/appSlice'
 import { Zoom, toast } from 'react-toastify'
 import { categories } from '../../../utils/constants'
-import 'react-toastify/dist/ReactToastify.css';
 import { editBlog, getBlogById } from '../../../services/blog.api'
-import { Loading } from '../../../components/Loading/Loading'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const EditFormBlog = () => {
   const dataFetchedRef = useRef(false)
@@ -123,7 +120,7 @@ export const EditFormBlog = () => {
       { isLoading && (
         <div className='absolute flex flex-col items-center top-[40%] h-64 left-[10%] rounded-md bg-white shadow-md'>
           <Loading />
-          <p className='font-roboto text-black font-medium text-lg'>Uploading image, updating blog</p>
+          <p className='font-roboto text-black font-medium text-lg'>{message}</p>
         </div>
       )}
       <form encType="multipart/form-data" className="w-full" onSubmit={handleSubmit}>

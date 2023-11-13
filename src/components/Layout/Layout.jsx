@@ -1,6 +1,5 @@
 import React from 'react'
-import { Sidebar } from '../Sidebar/Sidebar'
-import { Navbar } from '../Navbar/Navbar'
+import { Navbar, Sidebar } from '../index'
 import { useStateContext } from '../../context/ContextProvider'
 
 export const Layout = ({children}) => {

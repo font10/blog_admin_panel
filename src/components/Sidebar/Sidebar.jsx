@@ -4,7 +4,7 @@ import { menuSidebar } from "../../utils/constants";
 import { BsChevronDoubleLeft } from "../../utils/icons";
 import { Link } from "react-router-dom";
 import { useStateContext } from "../../context/ContextProvider";
-import { UserMenu } from "./UserMenu";
+import { UserMenu } from "../index";
 
 export const Sidebar = () => {
   const [isDropUser, setIsDropUser] = useState(false);

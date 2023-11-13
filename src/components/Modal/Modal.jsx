@@ -2,10 +2,7 @@ import React from 'react'
 import { AiOutlineCloseCircle } from '../../utils/icons'
 import { useDispatch } from 'react-redux'
 import { closeModal } from '../../redux/appSlice'
-import { CreateForm } from '../../pages/Places/CreatePlace/CreateForm'
-import { EditForm } from '../../pages/Places/EditPlace/EditForm'
-import { CreateFormBlog } from '../../pages/Blogs/CreateBlog/CreateFormBlog'
-import { EditFormBlog } from '../../pages/Blogs/EditBlog/EditFormBlog'
+import { CreateForm, CreateFormBlog, EditForm, EditFormBlog} from '../../pages/index'
 
 export const Modal = ({ action, page }) => {  
   const dispatch = useDispatch()
