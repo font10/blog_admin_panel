@@ -3,13 +3,14 @@ import { SelectCountries } from '../../../components/SelectCountries/SelectCount
 import { SelectPlace } from '../../../components/SelectPlace/SelectPlace'
 import { ImagePicker } from '../../../components/ImagePicker/ImagePicker'
 import { uploadImage } from '../../../services/files.api'
-import { editPlace, getPlaceById, getPlaces } from '../../../services/places.api'
+import { getPlaces } from '../../../services/places.api'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeModal, toggleActionCheck } from '../../../redux/appSlice'
 import { Zoom, toast } from 'react-toastify'
 import { categories } from '../../../utils/constants'
 import 'react-toastify/dist/ReactToastify.css';
 import { editBlog, getBlogById } from '../../../services/blog.api'
+import { Loading } from '../../../components/Loading/Loading'
 
 export const EditFormBlog = () => {
   const dataFetchedRef = useRef(false)
@@ -17,6 +18,8 @@ export const EditFormBlog = () => {
   const { id } = useSelector((state) => state.app)
   const dispatch = useDispatch()
   const [places, setPlaces] = useState()
+  const [isLoading, setIsLoading] = useState(false)
+  const [message, setMessage] = useState('')
   const [inputs, setInputs] = useState({
     country: 'Afghanistan',
     category: '',
@@ -54,7 +57,8 @@ export const EditFormBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    setIsLoading(true)
+    setMessage('Uploading image, updating blog')
     let updPlace = {}
 
     if(typeof inputs.image === 'object') {
@@ -109,14 +113,19 @@ export const EditFormBlog = () => {
         theme: "colored",
     }))
     
-
-
-    
+    setIsLoading(false)
+    setMessage('')    
   }
   
   return (
     <div className='h-full w-full'>
       <span className='text-black font-londrina text-2xl'>Edit Blog</span>
+      { isLoading && (
+        <div className='absolute flex flex-col items-center top-[40%] h-64 left-[10%] rounded-md bg-white shadow-md'>
+          <Loading />
+          <p className='font-roboto text-black font-medium text-lg'>Uploading image, updating blog</p>
+        </div>
+      )}
       <form encType="multipart/form-data" className="w-full" onSubmit={handleSubmit}>
         { inputs && 
           <div>

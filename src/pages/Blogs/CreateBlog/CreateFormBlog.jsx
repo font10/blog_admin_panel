@@ -9,11 +9,14 @@ import { Zoom, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { categories } from '../../../utils/constants'
 import { addBlog } from '../../../services/blog.api'
+import { Loading } from '../../../components/Loading/Loading'
 
 export const CreateFormBlog = () => {
   const { user, token } = useSelector((state) => state.auth)
   const dispatch = useDispatch()  
   const [places, setPlaces] = useState()
+  const [isLoading, setIsLoading] = useState(false)
+  const [message, setMessage] = useState('')
   const [inputs, setInputs] = useState({
     country: 'Afghanistan',
     category: categories[0],
@@ -42,11 +45,13 @@ export const CreateFormBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(inputs)
 
-    const formData = new FormData()  
+    const formData = new FormData() 
+    console.log(typeof inputs.image) 
 
-    if(inputs.image) {
+    if(inputs.image !== undefined && typeof inputs.image === 'object') {
+      setIsLoading(true)
+      setMessage('Uploading image, creating blog')
       formData.append("image", inputs.image)
 
       const url = await uploadImage(token, formData)
@@ -92,12 +97,29 @@ export const CreateFormBlog = () => {
         autoClose: 1500,
         theme: "colored",
       }))
-    } else return
+
+      setIsLoading(false)
+      setMessage('') 
+    } else {
+      toast.error('Insert a image', {
+        position: toast.POSITION.TOP_CENTER,
+        className: 'foo-bar text-lg font-medium font-bahnschrift',
+        transition: Zoom,
+        autoClose: 1500,
+        theme: "colored",
+      })
+    }
   }
   
   return (
     <div className='h-full w-full overflow-y-auto'>
       <span className='text-black font-londrina text-2xl'>Create Blog</span>
+      { isLoading && (
+        <div className='absolute flex flex-col items-center top-[40%] h-64 left-[10%] rounded-md bg-white shadow-md'>
+          <Loading />
+          <p className='font-roboto text-black font-medium text-lg'>Uploading image, updating blog</p>
+        </div>
+      )}
       <form encType="multipart/form-data" className="w-full" onSubmit={handleSubmit}>
         { inputs && 
           <div>
