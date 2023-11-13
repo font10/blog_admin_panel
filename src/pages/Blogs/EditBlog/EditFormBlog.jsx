@@ -55,21 +55,13 @@ export const EditFormBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const formData = new FormData()  
-    let filename = null
+    let updPlace = {}
 
     if(typeof inputs.image === 'object') {
-      console.log('Change image')
-    } else console.log('No changed image')
-
-    if(inputs.image && typeof inputs.image === 'object') {
+      const formData = new FormData()      
       formData.append("image", inputs.image)
-
       const url = await uploadImage(token, formData)
 
-      
-    let updPlace = {}
-    if(typeof inputs.image === 'object') {
       updPlace = {
         country: inputs.country,
         category: inputs.category,
@@ -78,6 +70,7 @@ export const EditFormBlog = () => {
         place: inputs.place,
         title: inputs.title
       }
+      console.log('Change image')
     } else {
       updPlace = {
         country: inputs.country,
@@ -90,32 +83,32 @@ export const EditFormBlog = () => {
     }
 
     await editBlog(token, id, updPlace)
-        .then(res => { 
-          toast.success(res.message, {
-            position: toast.POSITION.TOP_CENTER,
-            className: 'foo-bar text-lg font-medium font-bahnschrift',
-            transition: Zoom,
-            autoClose: 1500,
-            theme: "colored",
-          })
-          setTimeout(() => {              
-            dispatch(toggleActionCheck())
-            setInputs({
-              country: '',
-              place: '',
-              image: undefined,
-            })
-            dispatch(closeModal(false))
-          }, 500);
-        }) 
-        .catch(err => toast.error(err, {
+      .then(res => { 
+        toast.success(res.message, {
           position: toast.POSITION.TOP_CENTER,
           className: 'foo-bar text-lg font-medium font-bahnschrift',
           transition: Zoom,
           autoClose: 1500,
           theme: "colored",
-      }))
-    }
+        })
+        setTimeout(() => {              
+          dispatch(toggleActionCheck())
+          setInputs({
+            country: '',
+            place: '',
+            image: undefined,
+          })
+          dispatch(closeModal(false))
+        }, 500);
+      }) 
+      .catch(err => toast.error(err, {
+        position: toast.POSITION.TOP_CENTER,
+        className: 'foo-bar text-lg font-medium font-bahnschrift',
+        transition: Zoom,
+        autoClose: 1500,
+        theme: "colored",
+    }))
+    
 
 
     
