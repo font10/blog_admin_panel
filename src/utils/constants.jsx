@@ -28,6 +28,7 @@ export const categoriesSearch = [
   { name: 'Waterfall', icon: cascada },
 ]
 
+
 export const blogsHead = [ 
   { name: 'Image', width: 'w-14', align: 'text-right'},
   { name: 'Title', width: 'w-32', align: ''},
@@ -39,13 +40,6 @@ export const blogsHead = [
   { name: 'Created At', width: 'w-28', align: 'text-center'},
   { name: 'Updated At', width: 'w-28', align: 'text-center'  },
   { name: 'Actions', width: 'w-20', align: 'text-left'  }
-]
-
-export const imagesHead = [
-  { name: 'Image', width: '', align: 'text-center' },
-  { name: 'Name', width: 'w-40', align: 'text-center' },
-  { name: 'Size', width: 'w-16', align: '' },
-  { name: 'Weight', width: 'w-10', align: '' },
 ]
 
 export const placesHead = [

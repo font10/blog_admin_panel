@@ -17,6 +17,7 @@ export const Blogs = () => {
   const [action, setAction] = useState('Add')
   const { modal, actionCheck } = useSelector((state) => state.app)
   const { token } = useSelector((state) => state.auth)
+
   
   useEffect(() => {
     getBlogs()
@@ -72,7 +73,7 @@ export const Blogs = () => {
             <tr className='flex flex-row gap-3 justify-between w-full mt-5'>
               {
                 blogsHead.map(item => (
-                  <th key={crypto.randomUUID()} className={`font-londrina font-light ${item.width} ${item.align}`}>{item.name}</th>    
+                  <th key={crypto.randomUUID()} className={`font-londrina font-light ${location.pathname === '/' && item.name === 'Actions' ? 'hidden' : ''} ${item.width} ${item.align}`}>{item.name}</th>    
                 ))
               }
             </tr>

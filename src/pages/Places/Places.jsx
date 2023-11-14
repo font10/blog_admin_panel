@@ -73,7 +73,7 @@ export const Places = () => {
             <tr className='flex flex-row gap-3 justify-between w-full mt-5'>
               {
                 placesHead.map(item => (
-                  <th key={crypto.randomUUID()} className={`font-londrina font-light ${item.width} ${item.align}`}>{item.name}</th>    
+                  <th key={crypto.randomUUID()} className={`font-londrina font-light ${location.pathname === '/' && item.name === 'Actions' ? 'hidden' : ''} ${item.width} ${item.align}`}>{item.name}</th>    
                 ))
               }
             </tr>
