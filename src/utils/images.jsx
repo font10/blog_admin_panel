@@ -1,3 +1,4 @@
+import aurora from '../assets/images/aurora.jpg'
 import cascada from '../assets/icons/cascada.png'
 import castillo from '../assets/icons/castillo.png'
 import diafragma from '../assets/icons/diafragma.png'
@@ -17,6 +18,7 @@ import sombrilla from '../assets/icons/sombrilla.png'
 import via_lactea from '../assets/icons/via_lactea.png'
 
 export { 
+  aurora,
   cascada,
   castillo,
   diafragma,

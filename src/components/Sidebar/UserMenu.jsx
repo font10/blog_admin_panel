@@ -4,8 +4,10 @@ import { menuUserSidebar } from "../../utils/constants";
 import { MdArrowDropDown, MdArrowDropUp } from "../../utils/icons";
 import { Link } from "react-router-dom";
 import { Collapse } from "react-collapse";
+import { useSelector } from "react-redux";
 
 export const UserMenu = ({ activeMenu, isDropUser, setIsDropUser }) => {
+  const { user } = useSelector(state => state.auth)
 
   return (
     <div className="relative overflow-hidden w-full">
@@ -17,7 +19,7 @@ export const UserMenu = ({ activeMenu, isDropUser, setIsDropUser }) => {
               activeMenu ? "block" : "hidden"
             } font-londrina font-light`}
           >
-            Hola
+            {user.username}
           </span>
         </div>
         {isDropUser ? (
