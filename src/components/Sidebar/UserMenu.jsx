@@ -4,9 +4,11 @@ import { menuUserSidebar } from "../../utils/constants";
 import { MdArrowDropDown, MdArrowDropUp } from "../../utils/icons";
 import { Link } from "react-router-dom";
 import { Collapse } from "react-collapse";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from '../../redux/authSlice'
 
 export const UserMenu = ({ activeMenu, isDropUser, setIsDropUser }) => {
+  const dispatch = useDispatch()
   const { user } = useSelector(state => state.auth)
 
   return (
@@ -47,9 +49,7 @@ export const UserMenu = ({ activeMenu, isDropUser, setIsDropUser }) => {
             >
               <img src={menu.icon} alt="icon user action" width={30} />
               <span
-                className={`${activeMenu ? "block" : "hidden"} ${
-                  menu.name === "Logout" ? "text-red-600" : "text-white"
-                } font-londrina text-md font-extralight`}
+                className={`${activeMenu ? "block" : "hidden"} font-londrina text-md font-extralight`}
               >
                 {menu.name}
               </span>
