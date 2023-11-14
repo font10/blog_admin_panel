@@ -19,7 +19,7 @@ export const UserMenu = ({ activeMenu, isDropUser, setIsDropUser }) => {
               activeMenu ? "block" : "hidden"
             } font-londrina font-light`}
           >
-            {user.username ||'User'}
+            {user?.username ||'User'}
           </span>
         </div>
         {isDropUser ? (
