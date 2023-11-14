@@ -56,7 +56,7 @@ export const CreateFormBlog = () => {
 
       const newBlog = {
         country: inputs.country,
-        category: categories[0],
+        category: inputs.category,
         place: inputs.place,
         image: url,
         desc: inputs.desc,
